@@ -1,0 +1,43 @@
+name: Bot Consulta
+
+on:
+  schedule:
+    # 13h Brasília
+    - cron: '0 16 23-31 * 1-5'
+
+    # 16h Brasília
+    - cron: '0 19 23-31 * 1-5'
+
+    # 18h Brasília
+    - cron: '0 21 23-31 * 1-5'
+
+  workflow_dispatch:
+
+jobs:
+  executar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+
+      - name: Instalar Chromium do Playwright
+        run: |
+          playwright install --with-deps chromium
+
+      - name: Executar script
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          NOMES_BUSCA: ${{ secrets.NOMES_BUSCA }}
+        run: |
+          python main.py

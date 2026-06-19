@@ -60,7 +60,8 @@ with sync_playwright() as p:
         filtro_btn.click()
         page.wait_for_timeout(2000)
 
-        competencia = datetime.now().strftime("%m/%Y")
+        # competencia = datetime.now().strftime("%m/%Y")
+        competencia = "05/2026"
         print(f"Selecionando competência: {competencia}")
 
         radio_label = page.locator(

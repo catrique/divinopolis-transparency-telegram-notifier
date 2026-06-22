@@ -3,6 +3,14 @@ from datetime import datetime
 from playwright.sync_api import sync_playwright
 import os
 
+today = datetime.now()
+
+if today.day < 23:
+    print("Ainda não é dia 23. Encerrando.")
+    sys.exit(0)
+
+print("Dentro do período permitido. Executando consulta...")
+
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 NOMES = os.getenv("NOMES_BUSCA")

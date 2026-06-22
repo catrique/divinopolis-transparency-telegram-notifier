@@ -2,6 +2,7 @@ import requests
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 import os
+import sys
 
 today = datetime.now()
 

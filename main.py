@@ -6,8 +6,8 @@ import sys
 
 today = datetime.now()
 
-if today.day < 23:
-    print("Ainda não é dia 23. Encerrando.")
+if today.day < 22:
+    print("Ainda não é dia 22. Encerrando.")
     sys.exit(0)
 
 print("Dentro do período permitido. Executando consulta...")

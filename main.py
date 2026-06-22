@@ -157,7 +157,7 @@ with sync_playwright() as p:
     
     except Exception as e:
         try:
-            enviar_telegram(f"❌ Erro na consulta:\n{str(e)}")
+            enviar_telegram(f"Nenhum dado encontrado.")
         except Exception:
             pass
         raise

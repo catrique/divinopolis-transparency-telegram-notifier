@@ -6,11 +6,11 @@ import sys
 
 today = datetime.now()
 
-if today.day < 22:
-    print("Ainda não é dia 22. Encerrando.")
-    sys.exit(0)
+# if today.day < 22:
+#     print("Ainda não é dia 22. Encerrando.")
+#     sys.exit(0)
 
-print("Dentro do período permitido. Executando consulta...")
+# print("Dentro do período permitido. Executando consulta...")
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")

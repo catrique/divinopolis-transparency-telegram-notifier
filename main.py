@@ -6,11 +6,15 @@ import sys
 
 today = datetime.now()
 
-# if today.day < 22:
-#     print("Ainda não é dia 22. Encerrando.")
-#     sys.exit(0)
+if 26 <= today.day <= 31:
+    competencia = today.strftime("%m/%Y")
+elif 1 <= today.day <= 4:
+    competencia = (today - timedelta(days=5)).strftime("%m/%Y")
+else:
+    print(f"Hoje é dia {today.day}. Fora do período permitido (26 a 04). Encerrando.")
+    sys.exit(0)
 
-# print("Dentro do período permitido. Executando consulta...")
+print(f"Dentro do período permitido. Competência: {competencia}")
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
@@ -69,8 +73,6 @@ with sync_playwright() as p:
         filtro_btn.click()
         page.wait_for_timeout(2000)
 
-        competencia = datetime.now().strftime("%m/%Y")
-        # competencia = "05/2026"
         print(f"Selecionando competência: {competencia}")
 
         radio_label = page.locator(
